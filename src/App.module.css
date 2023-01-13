@@ -4,13 +4,79 @@
   box-sizing: border-box;
 }
 
+/* ANIMATION */
+
+html {
+  height:100%;
+}
+
+body {
+  margin:0;
+}
+
+.bg {
+  animation:slide 8s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+  bottom:0;
+  left:-50%;
+  opacity:.5;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:10s;
+}
+
+.bg3 {
+  animation-duration:15s;
+}
+
+h1 {
+  font-family:monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+
+/* STYLES */
+
 .container {
   height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 250px 0 0 0;
+  justify-content: center;
   align-items: center;
+  margin-inline: auto;
+
+}
+
+.game {
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(35px);
+  border: 3px solid #c8c8c8;
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 2px #555;
+  margin: 0 0 10px 0;
 }
 
 .flex {
@@ -23,21 +89,41 @@
   grid-template-rows: repeat(3, 100px);
   grid-template-columns: repeat(3, 100px);
   grid-gap: 1px;
-  background-color: #000;
-  border: 1px solid #000;
+  overflow: hidden;
 }
 
 .cell {
   border: none;
-  background-color: #fff;
+  background-color: transparent;
   font-size: 70px;
+  color: #fff;
+  text-shadow: 0 0 2px #555;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 1);
 }
 
+
 .cell:hover {
-  background-color: #f1f1f1;
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn {
   display: block;
-  margin-left: 5px;
+  width: 200px;
+  height: 25px;
+  margin: 05px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 2px #555;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.2)
+}
+
+.btn:not(:last-child) {
+  margin-bottom: 5px;
 }

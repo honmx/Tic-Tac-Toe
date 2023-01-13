@@ -26,8 +26,10 @@ const App = (props) => {
     for (let combination of combinations) {
       if (field[combination[0] - 1] === field[combination[1] - 1]
         && field[combination[0] - 1] === field[combination[2] - 1]
-        && field[combination[0] - 1] !== "") return player;
+        && field[combination[0] - 1] !== "") return player === "X" ? "O" : "X";
     }
+
+    if (!field.includes("")) return "tie";
 
     return null;
 
@@ -58,10 +60,15 @@ const App = (props) => {
 
   return (
     <div className={s.container}>
-      <Header player={player} field={field} check={checkForVictory} />
-      <div className={s.flex}>
-        <Field field={field} handleClick={handleCellClick} />
-        <History onClick={handleHistoryClick} history={history} />
+      <div className={s.bg}></div>
+      <div classname={`${s.bg} ${s.bg2}`}></div>
+      <div className={`${s.bg} ${s.bg3}`}></div>
+      <div className={s.game}>
+        <Header player={player} field={field} check={checkForVictory} />
+        <div className={s.flex}>
+          <Field field={field} handleClick={handleCellClick} />
+          <History onClick={handleHistoryClick} history={history} />
+        </div>
       </div>
     </div>
   )

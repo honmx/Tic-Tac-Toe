@@ -1,17 +1,20 @@
 import React from "react"
-// import s from "./Header.module.css"
+import s from "../App.module.css"
 
 const Header = (props) => {
 
-  const victory = props.check(props.field);
+  const winner = props.check(props.field);
 
   return (
-    <div>
+    <div className={s.header}>
       {
-        victory && <p>The winner is { props.player === "X" ? "O" : "X" }</p>
+        winner === "tie" ? <p>That's a tie</p> : null
       }
       {
-        !victory && <p>Current player: { props.player }</p>
+        winner && winner !== "tie" && <p>The winner is { winner }</p>
+      }
+      {
+        !winner && <p>Current player: { props.player }</p>
       }
     </div>
   )
